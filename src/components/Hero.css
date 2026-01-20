@@ -27,29 +27,30 @@
   );
 }
 
-/* ✅ Main Wrapper (FIXED alignment like screenshot) */
+/* ✅ Main Wrapper (NO extra space now) */
 .heroWrap {
   position: relative;
   z-index: 10;
   height: 100%;
   width: 100%;
-  padding: 14px 14px 22px;
+  padding: 8px 14px 14px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* ✅ TOP header (No glass, exact top alignment) */
+/* ✅ TOP header (Alignment removed ✅) */
 .heroHeaderCard {
   width: 100%;
   max-width: 420px;
 
   padding: 0;
-  margin-top: 8px;
+  margin-top: 6px;
 
-  display: grid;
-  grid-template-columns: 46px 1fr 46px;
+  /* ✅ changed from grid to flex */
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 
@@ -65,6 +66,7 @@
   height: 46px;
   border-radius: 999px;
   overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,7 +83,9 @@
   padding: 4px;
 }
 
+/* ✅ Header text no forced alignment */
 .heroHeaderText {
+  flex: 1;
   text-align: center;
   color: white;
 }
@@ -105,29 +109,33 @@
   opacity: 0.65;
 }
 
-/* ✅ CENTER AREA (Star must stay center) */
+/* ✅ CENTER AREA (fixed space problem) */
 .heroCenterArea {
   width: 100%;
   max-width: 420px;
-  flex: 1;
+
+  /* ✅ removed flex:1 (this was causing huge empty space) */
+  flex: 0;
 
   display: flex;
   flex-direction: column;
-  justify-content: center; /* ✅ STAR stays in center */
+  justify-content: center;
   align-items: center;
 
-  padding-top: 8px;
+  padding-top: 0;
+  margin-top: 8px;
 }
 
+/* ✅ STAR LOGO */
 .heroMainLogo {
   width: min(90%, 330px);
   object-fit: contain;
-  margin-top: 14px;
+  margin-top: 0;
 
   filter: drop-shadow(0 0 22px rgba(0, 255, 255, 0.3));
 }
 
-/* ✅ BOTTOM AREA (Texts + Button + Divider like screenshot) */
+/* ✅ BOTTOM AREA */
 .heroBottomArea {
   width: 100%;
   max-width: 420px;
@@ -137,12 +145,12 @@
   align-items: center;
   justify-content: flex-end;
 
-  padding-bottom: 16px;
+  padding-bottom: 10px;
 }
 
 /* ✅ texts under star */
 .heroTexts {
-  margin-top: 10px;
+  margin-top: 12px;
   text-align: center;
   color: white;
 }
@@ -156,7 +164,7 @@
 }
 
 .heroTag {
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 13px;
   letter-spacing: 0.22em;
   font-weight: 700;
@@ -164,15 +172,14 @@
   line-height: 1.8;
 }
 
-/* ✅ REGISTER button (same as screenshot) */
+/* ✅ REGISTER button */
 .heroRegisterBtn {
-  margin-top: 18px;
+  margin-top: 16px;
   width: min(85%, 320px);
   height: 52px;
 
   border: none;
   outline: none;
-
   border-radius: 999px;
   cursor: pointer;
 
@@ -193,7 +200,7 @@
 
 /* ✅ Bottom divider line */
 .heroBottomDivider {
-  margin-top: 16px;
+  margin-top: 14px;
   height: 3px;
   width: 160px;
   border-radius: 999px;
