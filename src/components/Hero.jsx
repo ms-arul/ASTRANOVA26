@@ -85,17 +85,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="heroHeaderCard"
         >
-          {/* ✅ Left logo */}
-          <div className="heroHeaderBadge">
-            <img src="/t.png" alt="College Logo" />
-          </div>
-
-
-
-          {/* ✅ Right logo */}
-          <div className="heroHeaderBadge right">
-            <img src="/t.png" alt="NAAC" />
-          </div>
+          
         </motion.div>
 
         {/* ✅ CENTER: Star only (Perfect middle like screenshot) */}
