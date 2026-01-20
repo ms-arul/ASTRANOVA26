@@ -1,37 +1,72 @@
 export const events = [
-  { 
+  {
+    id: 1,
     title: "APEX INNOVATORS",
-    desc: "Battle it out with logic, speed, and creativity in this high-intensity programming showdown.",
+    category: "Paper / Project Presentation",
+    desc: "Present your paper or project with clarity, confidence, and innovation.",
     icon: "/event1.png",
     bg: "/1bg.png",
-    category: "Coding"
+    date: "2026-02-01",
+    time: "10:00 AM - 01:00 PM",
+    teamSize: "1 - 4",
+    venue: "Conference Hall",
+    prizePool: "Up to ₹6,000 + Mouse",
+    accentKey: "apex",
   },
-  { 
+  {
+    id: 2,
     title: "BINARY REBELLION",
-    desc: "Challenge your CSE fundamentals and outsmart competitors in an electrifying knowledge war.",
+    category: "Debate",
+    desc: "Speak smart, argue strong, and prove your point with logic and confidence.",
     icon: "/event2.png",
     bg: "/2bg.png",
-    category: "Quiz"
+    date: "2026-02-01",
+    time: "12:30 PM - 01:30 PM",
+    teamSize: "1 - 2",
+    venue: "Debate Arena",
+    prizePool: "Up to ₹1,500 + Spotify Subscription",
+    accentKey: "quiz",
   },
-  { 
+  {
+    id: 3,
     title: "PROMPT FORGE",
-    desc: "Sharpen your debugging instincts by fixing broken logic under pressure and time constraints.",
+    category: "Prompting",
+    desc: "Build powerful prompts and unlock the best AI-generated results.",
     icon: "/event3.png",
     bg: "/3bg.png",
-    category: "Debugging"
+    date: "2026-02-01",
+    time: "02:00 PM - 03:00 PM",
+    teamSize: "1 - 2",
+    venue: "AI Arena",
+    prizePool: "Up to ₹1,500 + Mouse",
+    accentKey: "prompt",
   },
-  { 
+  {
+    id: 4,
     title: "ZERO DAY",
-    desc: "Unleash your creative edge by crafting visually stunning and user-centric design solutions.",
+    category: "Debugging",
+    desc: "Spot bugs fast, fix logic errors, and race against the clock.",
     icon: "/event4.png",
     bg: "/4bg.png",
-    category: "Design"
+    date: "2026-02-01",
+    time: "03:30 PM - 05:00 PM",
+    teamSize: "1 - 2",
+    venue: "Debug Arena",
+    prizePool: "₹1,500 + Power Bank",
+    accentKey: "debug",
   },
-  { 
+  {
+    id: 5,
     title: "UXPLORE",
-    desc: "Showcase your innovative projects and turn bold ideas into real-world impact.",
+    category: "UI/UX",
+    desc: "Design stunning user experiences and impress with creativity and clarity.",
     icon: "/event5.png",
     bg: "/5bg.png",
-    category: "Innovation"
+    date: "2026-02-02",
+    time: "10:00 AM - 01:00 PM",
+    teamSize: "1 - 3",
+    venue: "UI/UX Arena",
+    prizePool: "Figma Subscription + ₹500 + Mouse",
+    accentKey: "uxplore",
   },
 ];
