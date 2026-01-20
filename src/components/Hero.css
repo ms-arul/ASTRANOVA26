@@ -1,0 +1,203 @@
+/* Hero.css */
+
+/* ✅ FULL mobile screen */
+.heroMobile {
+  position: relative;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  background: black;
+}
+
+/* ✅ Background layers */
+.heroLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ✅ Soft center spotlight */
+.heroSpotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(34, 211, 238, 0.1) 0%,
+    rgba(0, 0, 0, 0.88) 75%
+  );
+}
+
+/* ✅ Main Wrapper (FIXED alignment like screenshot) */
+.heroWrap {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  padding: 14px 14px 22px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ✅ TOP header (No glass, exact top alignment) */
+.heroHeaderCard {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 0;
+  margin-top: 8px;
+
+  display: grid;
+  grid-template-columns: 46px 1fr 46px;
+  align-items: center;
+  gap: 10px;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.heroHeaderBadge {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroHeaderBadge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroHeaderBadge.right img {
+  object-fit: contain;
+  padding: 4px;
+}
+
+.heroHeaderText {
+  text-align: center;
+  color: white;
+}
+
+.heroHeaderText h3 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.heroHeaderText p {
+  margin-top: 4px;
+  font-size: 11px;
+  opacity: 0.88;
+}
+
+.heroHeaderText span {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  opacity: 0.65;
+}
+
+/* ✅ CENTER AREA (Star must stay center) */
+.heroCenterArea {
+  width: 100%;
+  max-width: 420px;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ✅ STAR stays in center */
+  align-items: center;
+
+  padding-top: 8px;
+}
+
+.heroMainLogo {
+  width: min(90%, 330px);
+  object-fit: contain;
+  margin-top: 14px;
+
+  filter: drop-shadow(0 0 22px rgba(0, 255, 255, 0.3));
+}
+
+/* ✅ BOTTOM AREA (Texts + Button + Divider like screenshot) */
+.heroBottomArea {
+  width: 100%;
+  max-width: 420px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-bottom: 16px;
+}
+
+/* ✅ texts under star */
+.heroTexts {
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+}
+
+.heroDept {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: serif;
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+.heroTag {
+  margin-top: 12px;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: rgba(34, 211, 238, 0.85);
+  line-height: 1.8;
+}
+
+/* ✅ REGISTER button (same as screenshot) */
+.heroRegisterBtn {
+  margin-top: 18px;
+  width: min(85%, 320px);
+  height: 52px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 999px;
+  cursor: pointer;
+
+  color: white;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+
+  background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.55);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.heroRegisterBtn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 45px rgba(236, 72, 153, 0.55);
+}
+
+/* ✅ Bottom divider line */
+.heroBottomDivider {
+  margin-top: 16px;
+  height: 3px;
+  width: 160px;
+  border-radius: 999px;
+  opacity: 0.85;
+
+  background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+}
