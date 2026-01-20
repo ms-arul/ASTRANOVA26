@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" },
+  }),
+};
+
 export default function FAQ() {
   const faqs = [
     {
@@ -21,24 +30,22 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
-     
-
-      {/* ================= CONTENT ================= */}
+    <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-black via-[#030712] to-black">
       <div className="relative z-10 py-28 px-4 sm:px-6">
-        
+
         {/* TITLE */}
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
           className="
             text-center
-            text-3xl sm:text-4xl
+            text-3xl sm:text-4xl lg:text-5xl
             font-extrabold
             tracking-wide
-            text-cyan-400
+            bg-gradient-to-r from-cyan-400 to-blue-500
+            bg-clip-text text-transparent
             mb-16
           "
         >
@@ -46,47 +53,75 @@ export default function FAQ() {
         </motion.h2>
 
         {/* FAQ LIST */}
-        <div className="max-w-3xl mx-auto space-y-5">
+        <div className="max-w-3xl mx-auto space-y-6">
           {faqs.map((item, index) => (
             <motion.details
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              custom={index}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
               className="
                 group
-                bg-black/45
+                relative
+                rounded-2xl
+                border border-white/10
+                bg-black/50
                 backdrop-blur-xl
-                border border-white/15
-                rounded-xl
-                p-5
-                shadow-[0_15px_40px_rgba(0,0,0,0.6)]
+                p-6
+                transition-all
+                duration-300
+                hover:border-cyan-400/40
+                hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
               "
             >
               <summary
                 className="
+                  flex items-center justify-between
                   cursor-pointer
                   list-none
                   font-semibold
                   text-white
+                  text-base sm:text-lg
                   tracking-wide
-                  flex justify-between items-center
+                  focus:outline-none
                 "
               >
                 {item.q}
-                <span className="
-                  text-cyan-400
-                  transform transition-transform
-                  group-open:rotate-45
-                ">
+
+                {/* ICON */}
+                <span
+                  className="
+                    ml-4
+                    flex h-9 w-9
+                    items-center justify-center
+                    rounded-full
+                    border border-cyan-400/40
+                    text-cyan-400
+                    transition-all duration-300
+                    group-open:rotate-45
+                    group-open:bg-cyan-400
+                    group-open:text-black
+                  "
+                >
                   +
                 </span>
               </summary>
 
-              <p className="mt-3 text-gray-300 leading-relaxed text-sm sm:text-base">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="
+                  mt-4
+                  text-gray-300
+                  leading-relaxed
+                  text-sm sm:text-base
+                "
+              >
                 {item.a}
-              </p>
+              </motion.p>
             </motion.details>
           ))}
         </div>
