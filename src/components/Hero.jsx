@@ -1,38 +1,23 @@
-import React, { useCallback } from "react";
-import { motion } from "framer-motion";
+import React, { useCallback, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./Hero.css";
 
 const Hero = () => {
+  const [openQR, setOpenQR] = useState(false);
+
   const scrollToEvent = useCallback(() => {
     document
       .getElementById("event")
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  // ✅ UPI DETAILS
-  const NAME = "Arul Prakash Sanmugasundaram";
-  const UPI_PRIMARY = "9962349659@ybl";
-  const UPI_BACKUP = "9962349659@ibl";
+  // ✅ UPI Link (works with GPay / PhonePe / Paytm)
+  const upiLink =
+    "upi://pay?pa=9962349659@ybl&pn=Arul%20Prakash%20Sanmugasundaram&cu=INR&tn=Symposium%20Registration%20Fee";
 
-  const NOTE = "Symposium Registration Fee - Pay 100";
-
-  // ✅ Build UPI Link (amount removed to reduce limit issue)
-  const buildUPILink = (upiId) =>
-    `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(
-      NAME
-    )}&cu=INR&tn=${encodeURIComponent(NOTE)}`;
-
-  const handlePayment = useCallback(() => {
-    // ✅ One button: choose primary / backup
-    const usePrimary = window.confirm(
-      "Pay Symposium Fee ₹100 ✅\n\nPress OK → Pay using UPI 1\nPress Cancel → Pay using UPI 2 (Backup)"
-    );
-
-    const link = usePrimary ? buildUPILink(UPI_PRIMARY) : buildUPILink(UPI_BACKUP);
-
-    // ✅ Open UPI app
-    window.location.href = link;
-  }, []);
+  const openUPIApp = () => {
+    window.location.href = upiLink;
+  };
 
   return (
     <section className="heroMobile">
@@ -61,18 +46,14 @@ const Hero = () => {
         {/* ✅ BOTTOM */}
         <div className="heroBottomArea">
           <div className="heroTexts">
-            {/* ✅ Department in ONE LINE */}
             <h2 className="heroDept">
               Department of Computer Science & Engineering
             </h2>
-
-            {/* ✅ Motion Gradient Slogan */}
             <h4 className="heroTag">INNOVATE • COMPETE • ELEVATE</h4>
           </div>
 
           {/* ✅ Buttons */}
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
-            {/* ✅ REGISTER */}
+          <div className="heroBtnRow">
             <motion.button
               onClick={scrollToEvent}
               whileTap={{ scale: 0.95 }}
@@ -82,25 +63,60 @@ const Hero = () => {
               REGISTER NOW
             </motion.button>
 
-            {/* ✅ PAYMENT */}
             <motion.button
-              onClick={handlePayment}
+              onClick={() => setOpenQR(true)}
               whileTap={{ scale: 0.95 }}
               whileHover={{ scale: 1.03 }}
               className="heroPayBtn"
             >
-              PAY ₹100
+              PAY NOW
             </motion.button>
           </div>
-
-          {/* ✅ Small note under buttons */}
-          <p style={{ marginTop: "10px", fontSize: "12px", opacity: 0.85, textAlign: "center" }}>
-            If payment shows <b>Limit Exceeded</b>, press Cancel to use Backup UPI ✅
-          </p>
-
-          {/* ❌ Removed Bottom Divider Bar */}
-          {/* <div className="heroBottomDivider" /> */}
         </div>
+
+        {/* ✅ QR Dialog */}
+        <AnimatePresence>
+          {openQR && (
+            <motion.div
+              className="qrOverlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpenQR(false)}
+            >
+              <motion.div
+                className="qrModal"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* ✅ ONLY QR (as you asked) */}
+                <img
+                  src="/qr.png"
+                  alt="Scan to Pay"
+                  className="qrImage"
+                  onClick={openUPIApp} // ✅ click QR = open UPI app
+                />
+
+                {/* ✅ Extra button for direct open */}
+                <motion.button
+                  onClick={openUPIApp}
+                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.03 }}
+                  className="openUpiBtn"
+                >
+                  OPEN IN GPay / PhonePe
+                </motion.button>
+
+                <button className="qrCloseBtn" onClick={() => setOpenQR(false)}>
+                  ✕
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
