@@ -6,7 +6,9 @@
   height: 100dvh;
   width: 100%;
   overflow: hidden;
-  background: black;
+
+  /* ✅ Removed black background */
+  background: transparent;
 }
 
 /* ✅ Background layers */
@@ -16,14 +18,16 @@
   pointer-events: none;
 }
 
-/* ✅ Soft center spotlight */
+/* ✅ Soft center spotlight (Vignette Removed ✅) */
 .heroSpotlight {
   position: absolute;
   inset: 0;
+
+  /* ✅ last black value set to 0 */
   background: radial-gradient(
     circle at center,
     rgba(34, 211, 238, 0.1) 0%,
-    rgba(0, 0, 0, 0.88) 75%
+    rgba(0, 0, 0, 0) 75%
   );
 }
 
@@ -38,6 +42,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* ✅ makes bottom section push down */
+  justify-content: flex-start;
 }
 
 /* ✅ TOP header (Alignment removed ✅) */
@@ -155,21 +162,56 @@
   color: white;
 }
 
+/* ✅ Department name in ONE LINE ✅ (UPDATED PROFESSIONAL FONT ✅) */
 .heroDept {
   font-size: 16px;
-  font-weight: 500;
-  font-family: serif;
-  opacity: 0.95;
+  font-weight: 600;
+
+  /* ✅ Modern + Professional attractive font */
+  font-family: "Inter", "Poppins", "Montserrat", "Segoe UI", Arial, sans-serif;
+
+  opacity: 0.96;
   line-height: 1.4;
+  letter-spacing: 0.4px;
+
+  /* ✅ Force in one line */
+  white-space: nowrap;
+
+  /* ✅ Premium soft glow */
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.18);
 }
 
+/* ✅ Slogan below department ✅ (Animated Gradient Text) */
 .heroTag {
-  margin-top: 10px;
+  margin-top: 6px;
   font-size: 13px;
   letter-spacing: 0.22em;
-  font-weight: 700;
-  color: rgba(34, 211, 238, 0.85);
+  font-weight: 800;
   line-height: 1.8;
+
+  /* ✅ Gradient text */
+  background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899, #22d3ee);
+  background-size: 300% 300%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* ✅ Motion effect */
+  animation: heroGradientMove 3s ease-in-out infinite;
+}
+
+/* ✅ Gradient Motion Keyframes */
+@keyframes heroGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ✅ REGISTER button */
@@ -198,13 +240,95 @@
   box-shadow: 0 0 45px rgba(236, 72, 153, 0.55);
 }
 
-/* ✅ Bottom divider line */
+/* ❌ Bottom divider REMOVED ✅ */
+/* If divider still exists in JSX, it won't show */
 .heroBottomDivider {
-  margin-top: 14px;
-  height: 3px;
-  width: 160px;
-  border-radius: 999px;
-  opacity: 0.85;
+  display: none !important;
+}
+.heroBtnRow {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-  background: linear-gradient(90deg, #22d3ee, #a855f7, #ec4899);
+/* ✅ Pay button styling */
+.heroPayBtn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 153, 255, 0.35);
+}
+
+/* ✅ QR Dialog Overlay */
+.qrOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ✅ QR Modal */
+.qrModal {
+  position: relative;
+  width: min(360px, 92vw);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ✅ QR Image Only */
+.qrImage {
+  width: 260px;
+  height: 260px;
+  border-radius: 16px;
+  object-fit: cover;
+  cursor: pointer;
+  background: white;
+  padding: 10px;
+}
+
+/* ✅ UPI open button */
+.openUpiBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff7a18, #af002d);
+  color: #fff;
+}
+
+/* ✅ Close button */
+.qrCloseBtn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 900;
 }
